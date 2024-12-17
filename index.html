@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Horizon Academy | Responsive Learning</title>
+    <style>
+      :root {
+        --primary-color: #3498db;
+        --secondary-color: #8e44ad;
+        --text-color: #2c3e50;
+        --background-color: #f4f6f7;
+        --white: #ffffff;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        font-size: 16px;
+      }
+
+      body {
+        font-family: "Arial", sans-serif;
+        line-height: 1.6;
+        color: var(--text-color);
+        overflow-x: hidden;
+      }
+
+      /* Fluid Typography */
+      h1 {
+        font-size: clamp(2rem, 5vw, 3.5rem);
+      }
+
+      h2 {
+        font-size: clamp(1.5rem, 4vw, 2.5rem);
+      }
+
+      /* Navigation */
+      .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 5%;
+        background-color: var(--white);
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        position: fixed;
+        width: 100%;
+        top: 0;
+        z-index: 1000;
+        transition: all 0.3s ease;
+      }
+
+      .logo {
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: var(--text-color);
+      }
+
+      .hamburger-menu {
+        display: none;
+        flex-direction: column;
+        cursor: pointer;
+      }
+
+      .hamburger-menu span {
+        width: 25px;
+        height: 3px;
+        background-color: var(--text-color);
+        margin: 3px 0;
+        transition: 0.4s;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 20px;
+        align-items: center;
+      }
+
+      .nav-links a {
+        text-decoration: none;
+        color: var(--text-color);
+        transition: color 0.3s ease, transform 0.3s ease;
+      }
+
+      .nav-links a:hover {
+        color: var(--primary-color);
+        transform: translateY(-3px);
+      }
+
+      .nav-links .cta-button {
+        background: linear-gradient(
+          135deg,
+          var(--primary-color),
+          var(--secondary-color)
+        );
+        color: white;
+        padding: 12px 24px;
+        border-radius: 50px;
+        text-decoration: none;
+        font-weight: bold;
+        font-size: 1.1rem;
+        display: inline-block;
+        transition: all 0.3s ease-in-out;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      .cta-button:hover {
+        background: linear-gradient(135deg, #2980b9, #9b59b6);
+        transform: translateY(-3px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+      }
+
+      /* Hero Section */
+      .hero {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        min-height: 100vh;
+        padding: 2rem 5%;
+        margin-top: 60px;
+        background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+        color: var(--white);
+      }
+
+      .hero-content {
+        flex: 1;
+        max-width: 50%;
+      }
+
+      .hero-image {
+        flex: 1;
+        max-width: 50%;
+        height: auto;
+        transition: transform 0.3s ease-in-out;
+      }
+
+      .hero-image:hover {
+        transform: scale(1.05);
+      }
+
+      .hero-buttons {
+        display: flex;
+        gap: 1rem;
+        margin-top: 1.5rem;
+      }
+
+      .hero-buttons a {
+        padding: 0.75rem 1.5rem;
+        text-decoration: none;
+        border-radius: 25px;
+      }
+
+      .primary-button {
+        background-color: var(--white);
+        color: var(--primary-color);
+      }
+
+      .secondary-button {
+        border: 2px solid var(--white);
+        color: var(--white);
+      }
+
+      /* Programs Section */
+      .programs {
+        padding: 100px 5%;
+        background-color: white;
+        text-align: center;
+      }
+
+      .programs-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 30px;
+        margin-top: 50px;
+      }
+
+      .program-card {
+        background-color: #f8f9fa;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
+      }
+
+      .program-card:hover {
+        transform: scale(1.05);
+      }
+
+      .program-card img {
+        max-width: 100%;
+        border-radius: 10px;
+        margin-bottom: 20px;
+        transition: transform 0.3s ease;
+      }
+
+      .program-card img:hover {
+        transform: scale(1.1);
+      }
+
+      /* Testimonials Section */
+      .testimonials {
+        background-color: #f4f6f7;
+        padding: 100px 5%;
+        text-align: center;
+      }
+
+      .testimonial-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+        margin-top: 50px;
+      }
+
+      .testimonial-card {
+        background-color: white;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
+      }
+
+      .testimonial-card:hover {
+        transform: translateY(-10px);
+      }
+
+      /* Responsive Design */
+      @media screen and (max-width: 768px) {
+        .navbar {
+          padding: 1rem 3%;
+        }
+
+        .hamburger-menu {
+          display: flex;
+        }
+
+        .nav-links {
+          display: none;
+          position: absolute;
+          top: 100%;
+          left: 0;
+          width: 100%;
+          background-color: var(--white);
+          flex-direction: column;
+          text-align: center;
+          padding: 1rem;
+          box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-links.active {
+          display: flex;
+        }
+
+        .hero {
+          flex-direction: column;
+          text-align: center;
+        }
+
+        .hero-content,
+        .hero-image {
+          max-width: 100%;
+          text-align: center;
+        }
+
+        .hero-buttons {
+          justify-content: center;
+        }
+      }
+
+      /* Features Section */
+      .features {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1rem;
+        padding: 4rem 5%;
+        background-color: var(--background-color);
+      }
+
+      .feature-item {
+        text-align: center;
+        padding: 1.5rem;
+        background-color: var(--white);
+        border-radius: 10px;
+        transition: transform 0.3s ease;
+      }
+
+      .feature-item:hover {
+        transform: translateY(-10px);
+      }
+
+      .feature-icon {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+      }
+
+      /* Footer */
+      .footer {
+        background-color: var(--text-color);
+        color: var(--white);
+        padding: 2rem 5%;
+        text-align: center;
+      }
+
+      /* Scroll Animation */
+      .scroll-animation {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+      }
+
+      .scroll-animation.active {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="logo">Horizon Academy</div>
+      <div class="hamburger-menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <div class="nav-links">
+        <a href="/sampleSchoolWebsite">Home</a>
+        <a href="programs.html">Programs</a>
+        <a href="aboutUs.html">About</a>
+        <a href="contactUs.html">Contact</a>
+        <a href="learnMore.html" class="cta-button">Learn More</a>
+      </div>
+    </nav>
+
+    <section class="hero">
+      <div class="hero-content">
+        <h1>Empowering Minds, Shaping Futures</h1>
+        <p>
+          A modern educational approach that nurtures creativity, critical
+          thinking, and personal growth for students of all ages.
+        </p>
+        <div class="hero-buttons">
+          <a href="learnMore.html" class="primary-button">Learn More</a>
+          <a href="programs.html" class="secondary-button">Our Programs</a>
+        </div>
+      </div>
+      <img src="school.jpg" alt="School Campus" class="hero-image" />
+    </section>
+
+    <section class="features">
+      <div class="feature-item">
+        <div class="feature-icon">
+          <img src="./research_books_22128.png" alt="" />
+        </div>
+        <h3>Comprehensive Curriculum</h3>
+        <p>
+          Innovative learning programs designed to challenge and inspire
+          students.
+        </p>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon">
+          <img src="./teacher_128_44171.png" alt="" />
+        </div>
+        <h3>Expert Faculty</h3>
+        <p>
+          Experienced educators dedicated to student success and personal
+          development.
+        </p>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon">
+          <img src="./globe_internet_planet_globo_10812.png" alt="" />
+        </div>
+        <h3>Global Perspective</h3>
+        <p>
+          Preparing students to become global citizens in an interconnected
+          world.
+        </p>
+      </div>
+    </section>
+
+    <!-- Programs Section -->
+    <section class="programs scroll-animation">
+      <h2>Our Academic Programs</h2>
+      <p>
+        Discover a wide range of educational opportunities tailored to different
+        age groups and interests.
+      </p>
+      <div class="programs-grid">
+        <div class="program-card">
+          <img src="./primarySchool.jpeg" alt="Elementary Program" />
+          <h3>Primary School</h3>
+          <p>Building strong foundations for lifelong learning.</p>
+        </div>
+        <div class="program-card">
+          <img src="./middelSchool.jpeg" alt="Middle School Program" />
+          <h3>Middle School Curriculum</h3>
+          <p>Nurturing curiosity and critical thinking skills.</p>
+        </div>
+        <div class="program-card">
+          <img src="./highSchool.jpeg" alt="High School Program" />
+          <h3>High School Advanced Programs</h3>
+          <p>Preparing students for higher education and beyond.</p>
+        </div>
+        <div class="program-card">
+          <img src="./langSchool.jpeg" alt="STEM Program" />
+          <h3>Language Program</h3>
+          <p>Innovative science and technology learning experiences.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials scroll-animation">
+      <h2>What Our Students Say</h2>
+      <p>
+        Hear from our students about their transformative learning experiences.
+      </p>
+      <div class="testimonial-grid">
+        <div class="testimonial-card">
+          <p>
+            "Horizon Academy has been instrumental in my personal and academic
+            growth."
+          </p>
+          <h4>- Emily Rodriguez, Senior Student</h4>
+        </div>
+        <div class="testimonial-card">
+          <p>
+            "The faculty here truly goes above and beyond to support students."
+          </p>
+          <h4>- Michael Chen, Parent</h4>
+        </div>
+        <div class="testimonial-card">
+          <p>
+            "I discovered my passion for science through the amazing STEM
+            programs."
+          </p>
+          <h4>- Sarah Johnson, Alumni</h4>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <h3>Horizon Academy</h3>
+      <p>Inspiring Education, Empowering Futures</p>
+      <p>© 2024 Horizon Academy. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+      document
+        .querySelector(".hamburger-menu")
+        .addEventListener("click", function () {
+          document.querySelector(".nav-links").classList.toggle("active");
+        });
+
+      // Scroll Animation Script
+      function checkScroll() {
+        const scrollAnimationElements =
+          document.querySelectorAll(".scroll-animation");
+
+        scrollAnimationElements.forEach((element) => {
+          const elementTop = element.getBoundingClientRect().top;
+          const windowHeight = window.innerHeight;
+
+          if (elementTop < windowHeight * 0.8) {
+            element.classList.add("active");
+          } else {
+            element.classList.remove("active");
+          }
+        });
+      }
+
+      // Add scroll event listener
+      window.addEventListener("scroll", checkScroll);
+
+      // Initial check
+      checkScroll();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Programs | Horizon Academy</title>
+    <style>
+      /* Base Styles */
+      :root {
+        --primary-color: #3498db;
+        --secondary-color: #8e44ad;
+        --text-color: #2c3e50;
+        --background-color: #f4f6f7;
+        --white: #ffffff;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      html {
+        font-size: 16px;
+      }
+
+      body {
+        font-family: "Arial", sans-serif;
+        line-height: 1.6;
+        color: var(--text-color);
+        overflow-x: hidden;
+        background-color: var(--background-color);
+      }
+
+      /* Navigation */
+      .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 5%;
+        background-color: var(--white);
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        position: fixed;
+        width: 100%;
+        top: 0;
+        z-index: 1000;
+        animation: fadeInUp 0.7s ease-out;
+        transition: background-color 0.3s ease;
+      }
+
+      .hamburger-menu {
+        display: none;
+        flex-direction: column;
+        cursor: pointer;
+      }
+
+      .hamburger-menu span {
+        width: 25px;
+        height: 3px;
+        background-color: var(--text-color);
+        margin: 3px 0;
+        transition: 0.4s;
+      }
+
+      .logo {
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: var(--text-color);
+        transition: transform 0.3s ease;
+      }
+
+      .logo:hover {
+        transform: scale(1.05);
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 20px;
+        align-items: center;
+      }
+
+      .nav-links a {
+        text-decoration: none;
+        color: var(--text-color);
+        transition: color 0.3s ease, transform 0.3s ease;
+      }
+
+      .nav-links a:hover {
+        color: var(--primary-color);
+        transform: translateY(-3px);
+      }
+
+      .nav-links .cta-button {
+        background: linear-gradient(
+          135deg,
+          var(--primary-color),
+          var(--secondary-color)
+        );
+        color: white;
+        padding: 12px 24px;
+        border-radius: 50px;
+        text-decoration: none;
+        font-weight: bold;
+        font-size: 1.1rem;
+        display: inline-block;
+        transition: all 0.3s ease-in-out;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      .cta-button:hover {
+        background: linear-gradient(135deg, #2980b9, #9b59b6);
+        transform: translateY(-3px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+      }
+
+      /* Fluid Typography */
+      h1 {
+        font-size: clamp(2rem, 5vw, 3.5rem);
+      }
+
+      h3 {
+        font-size: clamp(1.2rem, 4vw, 1.6rem);
+      }
+
+      /* Hero Section */
+      .hero {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+        color: white;
+        padding: 0 5%;
+        margin-top: 60px;
+      }
+
+      .hero-content {
+        text-align: center;
+        max-width: 800px;
+        animation: fadeInUp 1s ease-out;
+      }
+
+      .hero-description {
+        font-size: clamp(1rem, 3vw, 1.2rem);
+        margin-bottom: 30px;
+        opacity: 0.9;
+      }
+
+      /* Programs Section */
+      .programs-section {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1rem;
+        padding: 4rem 5%;
+        background-color: var(--background-color);
+      }
+
+      .program-box {
+        background-color: var(--white);
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        animation: fadeInUp 1s ease-out;
+      }
+
+      .program-box h3 {
+        margin-bottom: 10px;
+        color: black;
+      }
+
+      .program-box p {
+        font-size: 0.95rem;
+        margin-bottom: 15px;
+        color: black;
+      }
+
+      .program-box:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+      }
+
+      /* Footer */
+      .footer {
+        background-color: var(--text-color);
+        color: var(--white);
+        padding: 2rem 5%;
+        text-align: center;
+      }
+
+      .footer a {
+        color: var(--white);
+        text-decoration: none;
+        margin: 0 10px;
+        transition: color 0.3s ease;
+      }
+
+      .footer a:hover {
+        color: var(--primary-color);
+      }
+
+      /* Responsive Design */
+      @media screen and (max-width: 768px) {
+        .navbar {
+          padding: 1rem 3%;
+        }
+
+        .hamburger-menu {
+          display: flex;
+        }
+
+        .nav-links {
+          display: none;
+          position: absolute;
+          top: 100%;
+          left: 0;
+          width: 100%;
+          background-color: var(--white);
+          flex-direction: column;
+          text-align: center;
+          padding: 1rem;
+          box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-links.active {
+          display: flex;
+        }
+
+        .hero {
+          text-align: center;
+        }
+
+        .hero-content {
+          max-width: 100%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav class="navbar">
+      <div class="logo">Horizon Academy</div>
+      <div class="hamburger-menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <div class="nav-links">
+        <a href="/sampleSchoolWebsite">Home</a>
+        <a href="programs.html">Programs</a>
+        <a href="aboutUs.html">About</a>
+        <a href="contactUs.html">Contact</a>
+        <a href="learnMore.html" class="cta-button">Learn More</a>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-content">
+        <h1>Our Programs</h1>
+        <p class="hero-description">
+          Horizon Academy offers a variety of programs designed to help students
+          excel in their academic and professional pursuits. Explore our
+          offerings:
+        </p>
+      </div>
+    </section>
+
+    <!-- Programs Section -->
+    <section class="programs-section">
+      <div class="program-box">
+        <h3>Data Science Program</h3>
+        <p>
+          Our Data Science program provides students with the skills needed to
+          analyze and interpret complex data to drive decision-making.
+        </p>
+      </div>
+
+      <div class="program-box">
+        <h3>Software Engineering Program</h3>
+        <p>
+          This program teaches students how to design, develop, and maintain
+          software systems, preparing them for careers in tech.
+        </p>
+      </div>
+
+      <div class="program-box">
+        <h3>Business Administration Program</h3>
+        <p>
+          Gain essential knowledge in business management, marketing, and
+          strategy to succeed in the corporate world.
+        </p>
+      </div>
+
+      <div class="program-box">
+        <h3>Cybersecurity Program</h3>
+        <p>
+          Prepare for a career in cybersecurity with a focus on protecting
+          networks, systems, and data from cyber threats.
+        </p>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <h3>Horizon Academy</h3>
+      <p>Inspiring Education, Empowering Futures</p>
+      <p>© 2024 Horizon Academy. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+      document
+        .querySelector(".hamburger-menu")
+        .addEventListener("click", function () {
+          document.querySelector(".nav-links").classList.toggle("active");
+        });
+    </script>
+  </body>
+</html>

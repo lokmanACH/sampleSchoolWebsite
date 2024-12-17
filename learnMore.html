@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Learn More | Horizon Academy</title>
+    <style>
+      /* CSS Variables for consistent theming */
+      :root {
+        --primary-color: #3498db;
+        --secondary-color: #8e44ad;
+        --text-color: #2c3e50;
+        --background-color: #f4f6f7;
+        --white: #ffffff;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      body {
+        font-family: "Arial", sans-serif;
+        line-height: 1.6;
+        color: var(--text-color);
+        overflow-x: hidden;
+      }
+
+      /* Navigation */
+      .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 5%;
+        background-color: var(--white);
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        position: fixed;
+        width: 100%;
+        top: 0;
+        z-index: 1000;
+        transition: all 0.3s ease;
+      }
+
+      .hamburger-menu {
+        display: none;
+        flex-direction: column;
+        cursor: pointer;
+      }
+
+      .hamburger-menu span {
+        width: 25px;
+        height: 3px;
+        background-color: var(--text-color);
+        margin: 3px 0;
+        transition: 0.4s;
+      }
+
+      .logo {
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: var(--text-color);
+        transition: transform 0.3s ease;
+      }
+
+      .logo:hover {
+        transform: scale(1.05);
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 20px;
+        align-items: center;
+      }
+
+      .nav-links a {
+        text-decoration: none;
+        color: var(--text-color);
+        transition: color 0.3s ease, transform 0.3s ease;
+      }
+
+      .nav-links a:hover {
+        color: var(--primary-color);
+        transform: translateY(-3px);
+      }
+
+      .nav-links .cta-button {
+        background: linear-gradient(
+          135deg,
+          var(--primary-color),
+          var(--secondary-color)
+        );
+        color: white;
+        padding: 12px 24px;
+        border-radius: 50px;
+        text-decoration: none;
+        font-weight: bold;
+        font-size: 1.1rem;
+        display: inline-block;
+        transition: all 0.3s ease-in-out;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      .cta-button:hover {
+        background: linear-gradient(135deg, #2980b9, #9b59b6);
+        transform: translateY(-3px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+      }
+
+      /* Hero Section */
+      .hero {
+        display: flex;
+        align-items: center;
+        min-height: 100vh;
+        background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+        color: var(--white);
+        padding: 0 5%;
+        margin-top: 60px;
+      }
+
+      .hero-content {
+        max-width: 600px;
+        animation: fadeInUp 1s ease-out;
+      }
+
+      .hero-title {
+        font-size: clamp(2.5rem, 5vw, 3.5rem);
+        margin-bottom: 20px;
+        line-height: 1.2;
+      }
+
+      .hero-description {
+        font-size: clamp(1rem, 2vw, 1.2rem);
+        margin-bottom: 30px;
+        opacity: 0.9;
+      }
+
+      /* Learn More Section */
+      .learn-more-section {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 80px 5%;
+        background-color: var(--background-color);
+        flex-wrap: wrap;
+        text-align: center;
+      }
+
+      .learn-more-box {
+        background-color: var(--white);
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        width: 300px;
+        margin: 20px;
+        transition: transform 0.3s ease;
+      }
+
+      .learn-more-box:hover {
+        transform: translateY(-10px);
+      }
+
+      .learn-more-box h3 {
+        font-size: 1.5rem;
+        margin-bottom: 15px;
+        color: var(--primary-color);
+      }
+
+      .learn-more-box p {
+        font-size: 1rem;
+        margin-bottom: 10px;
+      }
+
+      /* Footer */
+      .footer {
+        background-color: var(--text-color);
+        color: var(--white);
+        padding: 50px 5%;
+        text-align: center;
+      }
+
+      .footer a {
+        color: var(--white);
+        text-decoration: none;
+        margin: 0 10px;
+        transition: color 0.3s ease;
+      }
+
+      .footer a:hover {
+        color: var(--primary-color);
+      }
+
+      /* Responsive Design */
+      @media screen and (max-width: 768px) {
+        .navbar {
+          padding: 1rem 3%;
+        }
+
+        .hamburger-menu {
+          display: flex;
+        }
+
+        .nav-links {
+          display: none;
+          position: absolute;
+          top: 100%;
+          left: 0;
+          width: 100%;
+          background-color: var(--white);
+          flex-direction: column;
+          text-align: center;
+          padding: 1rem;
+          box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-links.active {
+          display: flex;
+        }
+
+        .hero {
+          text-align: center;
+          align-items: flex-start;
+          padding-top: 100px;
+        }
+
+        .hero-content {
+          max-width: 100%;
+        }
+
+        .learn-more-section {
+          flex-direction: column;
+        }
+
+        .learn-more-box {
+          width: 100%;
+          max-width: 350px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav class="navbar">
+      <div class="logo">Horizon Academy</div>
+      <div class="hamburger-menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <div class="nav-links">
+        <a href="/sampleSchoolWebsite">Home</a>
+        <a href="programs.html">Programs</a>
+        <a href="aboutUs.html">About</a>
+        <a href="contactUs.html">Contact</a>
+        <a href="learnMore.html" class="cta-button">Learn More</a>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-content">
+        <h1 class="hero-title">Learn More About Us</h1>
+        <p class="hero-description">
+          Discover the values, mission, and history behind Horizon Academy.
+        </p>
+      </div>
+    </section>
+
+    <!-- Learn More Section -->
+    <section class="learn-more-section">
+      <div class="learn-more-box">
+        <h3>Our Mission</h3>
+        <p>
+          Horizon Academy is dedicated to providing students with the tools to
+          succeed academically and in life.
+        </p>
+      </div>
+
+      <div class="learn-more-box">
+        <h3>Our History</h3>
+        <p>
+          Founded in 2005, Horizon Academy has been committed to offering
+          quality education and empowering students to achieve their full
+          potential.
+        </p>
+      </div>
+
+      <div class="learn-more-box">
+        <h3>Our Values</h3>
+        <p>
+          We believe in fostering creativity, critical thinking, and leadership,
+          ensuring every student thrives in their academic journey.
+        </p>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <h3>Horizon Academy</h3>
+      <p>Inspiring Education, Empowering Futures</p>
+      <p>© 2024 Horizon Academy. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+      document.querySelector('.hamburger-menu').addEventListener('click', function() {
+        document.querySelector('.nav-links').classList.toggle('active');
+      });
+    </script>
+  </body>
+</html>
