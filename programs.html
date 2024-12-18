@@ -135,26 +135,34 @@
 
       /* Hero Section */
       .hero {
-        display: flex;
-        justify-content: center;
-        align-items: center;
+        background: linear-gradient(
+            to bottom,
+            rgba(0, 0, 0, 0.40),
+            rgba(0, 0, 0, 0.40)
+          ),
+          url("school.jpg") no-repeat center center/cover;
+        background-size: cover;
+        background-position: center;
         min-height: 100vh;
-        background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
-        color: white;
-        padding: 0 5%;
+        display: flex;
+        align-items: center;
+        padding: 2rem 5%;
         margin-top: 60px;
+        color: var(--white);
+      }
+      .hero-content h1 {
+        font-size: clamp(2rem, 5vw, 3.5rem);
       }
 
       .hero-content {
-        text-align: center;
-        max-width: 800px;
-        animation: fadeInUp 1s ease-out;
+        max-width: 60%;
+        text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
       }
 
-      .hero-description {
-        font-size: clamp(1rem, 3vw, 1.2rem);
-        margin-bottom: 30px;
-        opacity: 0.9;
+      .hero-buttons {
+        display: flex;
+        gap: 1rem;
+        margin-top: 1.5rem;
       }
 
       /* Programs Section */
@@ -267,14 +275,18 @@
     </nav>
 
     <!-- Hero Section -->
-    <section class="hero">
+    <section class="hero about-hero">
       <div class="hero-content">
         <h1>Our Programs</h1>
-        <p class="hero-description">
+        <p>
           Horizon Academy offers a variety of programs designed to help students
           excel in their academic and professional pursuits. Explore our
           offerings:
         </p>
+        <!-- <div class="hero-buttons">
+          <a href="learnMore.html" class="primary-button">Our Mission</a>
+          <a href="contactUs.html" class="secondary-button">Contact Us</a>
+        </div> -->
       </div>
     </section>
 
