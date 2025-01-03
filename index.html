@@ -1,322 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Horizon Academy | Responsive Learning</title>
-    <style>
-      :root {
-        --primary-color: #3498db;
-        --secondary-color: #8e44ad;
-        --text-color: #2c3e50;
-        --background-color: #f4f6f7;
-        --white: #ffffff;
-      }
-
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-
-      html {
-        font-size: 16px;
-      }
-
-      body {
-        font-family: "Arial", sans-serif;
-        line-height: 1.6;
-        color: var(--text-color);
-        overflow-x: hidden;
-      }
-
-      /* Fluid Typography */
-      h1 {
-        font-size: clamp(2.5rem, 6vw, 4rem);
-        font-weight: 700;
-        line-height: 1.2;
-      }
-
-      h2 {
-        font-size: clamp(2rem, 5vw, 3rem);
-        font-weight: 600;
-      }
-
-      /* Navigation */
-      .navbar {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 1rem 5%;
-        background-color: var(--white);
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        position: fixed;
-        width: 100%;
-        top: 0;
-        z-index: 1000;
-        transition: all 0.3s ease;
-      }
-
-      .logo {
-        font-size: 1.5rem;
-        font-weight: bold;
-        color: var(--text-color);
-      }
-
-      .hamburger-menu {
-        display: none;
-        flex-direction: column;
-        cursor: pointer;
-      }
-
-      .hamburger-menu span {
-        width: 25px;
-        height: 3px;
-        background-color: var(--text-color);
-        margin: 3px 0;
-        transition: 0.4s;
-      }
-
-      .nav-links {
-        display: flex;
-        gap: 20px;
-        align-items: center;
-      }
-
-      .nav-links a {
-        text-decoration: none;
-        color: var(--text-color);
-        transition: color 0.3s ease, transform 0.3s ease;
-      }
-
-      .nav-links a:hover {
-        color: var(--primary-color);
-        transform: translateY(-3px);
-      }
-
-      .nav-links .cta-button {
-        background: linear-gradient(
-          135deg,
-          var(--primary-color),
-          var(--secondary-color)
-        );
-        color: var(--white);
-        padding: 12px 24px;
-        border-radius: 50px;
-        text-decoration: none;
-        font-weight: bold;
-        font-size: 1.1rem;
-        display: inline-block;
-        transition: all 0.3s ease-in-out;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-      }
-
-      .cta-button:hover {
-        background: linear-gradient(135deg, #2980b9, #9b59b6);
-        transform: translateY(-3px);
-        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-      }
-
-      /* Hero Section */
-      .hero {
-        background: linear-gradient(
-            to bottom,
-            rgba(0, 0, 0, 0.4),
-            rgba(0, 0, 0, 0.4)
-          ),
-          url("school.jpg") no-repeat center center/cover;
-        background-size: cover;
-        background-position: center;
-        min-height: 100vh;
-        display: flex;
-        align-items: center;
-        padding: 2rem 5%;
-        margin-top: 60px;
-        color: var(--white);
-      }
-
-      .hero-content {
-        max-width: 60%;
-        text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-      }
-
-      .hero-buttons {
-        display: flex;
-        gap: 1rem;
-        margin-top: 1.5rem;
-      }
-
-      .hero-buttons a {
-        padding: 0.75rem 1.5rem;
-        text-decoration: none;
-        border-radius: 25px;
-      }
-
-      .primary-button {
-        background-color: var(--white);
-        color: var(--primary-color);
-      }
-
-      .secondary-button {
-        border: 2px solid var(--white);
-        color: var(--white);
-      }
-
-      /* Programs Section */
-      .programs {
-        padding: 100px 5%;
-        background-color: white;
-        text-align: center;
-      }
-
-      .programs-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 30px;
-        margin-top: 50px;
-      }
-
-      .program-card {
-        background-color: #f8f9fa;
-        padding: 30px;
-        border-radius: 10px;
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        transition: transform 0.3s ease;
-      }
-
-      .program-card:hover {
-        transform: scale(1.05);
-      }
-
-      .program-card img {
-        max-width: 100%;
-        border-radius: 10px;
-        margin-bottom: 20px;
-        transition: transform 0.3s ease;
-      }
-
-      .program-card img:hover {
-        transform: scale(1.1);
-      }
-
-      /* Testimonials Section */
-      .testimonials {
-        background-color: #f4f6f7;
-        padding: 100px 5%;
-        text-align: center;
-      }
-
-      .testimonial-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 30px;
-        margin-top: 50px;
-      }
-
-      .testimonial-card {
-        background-color: white;
-        padding: 30px;
-        border-radius: 10px;
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        transition: transform 0.3s ease;
-      }
-
-      .testimonial-card:hover {
-        transform: translateY(-10px);
-      }
-
-      /* Responsive Design */
-      @media screen and (max-width: 768px) {
-        .navbar {
-          padding: 1rem 3%;
-        }
-
-        .hamburger-menu {
-          display: flex;
-        }
-
-        .nav-links {
-          display: none;
-          position: absolute;
-          top: 100%;
-          left: 0;
-          width: 100%;
-          background-color: var(--white);
-          flex-direction: column;
-          text-align: center;
-          padding: 1rem;
-          box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .nav-links.active {
-          display: flex;
-        }
-
-        .hero {
-          background-position: 70%;
-          text-align: center;
-        }
-
-        .hero-content {
-          max-width: 100%;
-          text-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
-        }
-
-        .hero-buttons {
-          justify-content: center;
-        }
-      }
-
-      /* Features Section */
-      .features {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 1rem;
-        padding: 4rem 5%;
-        background-color: var(--background-color);
-      }
-
-      .feature-item {
-        text-align: center;
-        padding: 1.5rem;
-        background-color: var(--white);
-        border-radius: 10px;
-        transition: transform 0.3s ease;
-      }
-
-      .feature-item:hover {
-        transform: translateY(-10px);
-      }
-
-      .feature-icon {
-        font-size: 3rem;
-        margin-bottom: 1rem;
-      }
-
-      /* Footer */
-      .footer {
-        background-color: var(--text-color);
-        color: var(--white);
-        padding: 2rem 5%;
-        text-align: center;
-      }
-
-      /* Scroll Animation */
-      .scroll-animation {
-        opacity: 0;
-        transform: translateY(20px);
-        transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-      }
-
-      .scroll-animation.active {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    </style>
-  </head>
+    <title>Horizon Academy | Modern Learning Experience</title>
+    <link rel="stylesheet" href="./style/index.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+</head>
   <body>
     <nav class="navbar">
-      <div class="logo">Horizon Academy</div>
+      <div class="logo">
+        <img src="./img/horizon-logo.svg" alt="Horizon Academy Logo" />
+      </div>
       <div class="hamburger-menu">
         <span></span>
         <span></span>
@@ -348,7 +44,7 @@
     <section class="features">
       <div class="feature-item">
         <div class="feature-icon">
-          <img src="./research_books_22128.png" alt="" />
+          <img src="./img/research_books_22128.png" alt="Curriculum Icon" />
         </div>
         <h3>Comprehensive Curriculum</h3>
         <p>
@@ -358,7 +54,7 @@
       </div>
       <div class="feature-item">
         <div class="feature-icon">
-          <img src="./teacher_128_44171.png" alt="" />
+          <img src="./img/teacher_128_44171.png" alt="Faculty Icon" />
         </div>
         <h3>Expert Faculty</h3>
         <p>
@@ -368,7 +64,7 @@
       </div>
       <div class="feature-item">
         <div class="feature-icon">
-          <img src="./globe_internet_planet_globo_10812.png" alt="" />
+          <img src="./img/globe_internet_planet_globo_10812.png" alt="Global Perspective Icon" />
         </div>
         <h3>Global Perspective</h3>
         <p>
@@ -386,22 +82,22 @@
       </p>
       <div class="programs-grid">
         <div class="program-card">
-          <img src="./primarySchool.jpeg" alt="Elementary Program" />
+          <img src="./img/primarySchool.jpeg" alt="Elementary Program" />
           <h3>Primary School</h3>
           <p>Building strong foundations for lifelong learning.</p>
         </div>
         <div class="program-card">
-          <img src="./middelSchool.jpeg" alt="Middle School Program" />
+          <img src="./img/middelSchool.jpeg" alt="Middle School Program" />
           <h3>Middle School Curriculum</h3>
           <p>Nurturing curiosity and critical thinking skills.</p>
         </div>
         <div class="program-card">
-          <img src="./highSchool.jpeg" alt="High School Program" />
+          <img src="./img/highSchool.jpeg" alt="High School Program" />
           <h3>High School Advanced Programs</h3>
           <p>Preparing students for higher education and beyond.</p>
         </div>
         <div class="program-card">
-          <img src="./langSchool.jpeg" alt="STEM Program" />
+          <img src="./img/langSchool.jpeg" alt="STEM Program" />
           <h3>Language Program</h3>
           <p>Innovative science and technology learning experiences.</p>
         </div>
@@ -442,32 +138,7 @@
       <p>Inspiring Education, Empowering Futures</p>
       <p>© 2024 Horizon Academy. All Rights Reserved.</p>
     </footer>
-
-    <script>
-      document
-        .querySelector(".hamburger-menu")
-        .addEventListener("click", function () {
-          document.querySelector(".nav-links").classList.toggle("active");
-        });
-
-      function checkScroll() {
-        const scrollAnimationElements =
-          document.querySelectorAll(".scroll-animation");
-
-        scrollAnimationElements.forEach((element) => {
-          const elementTop = element.getBoundingClientRect().top;
-          const windowHeight = window.innerHeight;
-
-          if (elementTop < windowHeight * 0.8) {
-            element.classList.add("active");
-          } else {
-            element.classList.remove("active");
-          }
-        });
-      }
-
-      window.addEventListener("scroll", checkScroll);
-      checkScroll();
-    </script>
+    <script src="./js/hamburger-menu.js"></script>
+    <script src="./js/index.js"></script>
   </body>
 </html>

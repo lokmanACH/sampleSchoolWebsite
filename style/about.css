@@ -1,0 +1,257 @@
+:root {
+  --primary-color: #1c1d1f;
+  --secondary-color: #a435f0;
+  --text-color: #2d2f31;
+  --background-color: #fff;
+  --border-color: #d1d7dc;
+  --hover-color: #5624d0;
+  --white: #ffffff;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Inter', sans-serif;
+}
+
+body {
+  line-height: 1.4;
+  color: var(--text-color);
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 24px;
+  height: 72px;
+  border-bottom: 1px solid var(--border-color);
+  background: var(--background-color);
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--text-color);
+}
+
+.hamburger-menu {
+  display: none;
+  cursor: pointer;
+  z-index: 100;
+}
+
+.hamburger-menu span {
+  display: block;
+  width: 25px;
+  height: 3px;
+  margin: 5px;
+  background-color: var(--primary-color);
+  transition: all 0.3s ease;
+}
+
+.hamburger-menu.active span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.hamburger-menu.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger-menu.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(7px, -6px);
+}
+
+.nav-links {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: var(--text-color);
+  font-weight: 400;
+  font-size: 14px;
+  transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: var(--hover-color);
+}
+
+.cta-button {
+  background: var(--primary-color);
+  color: white !important;
+  padding: 12px 24px;
+  border-radius: 4px;
+  font-weight: 700 !important;
+  transition: background 0.3s ease !important;
+}
+
+.cta-button:hover {
+  background: var(--hover-color);
+}
+
+.hero {
+  margin-top: 72px;
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+              url("../img/school.jpg") center/cover;
+  padding: 80px 24px;
+  color: white;
+  animation: fadeIn 1s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+      opacity: 0;
+      transform: translateY(20px);
+  }
+  to {
+      opacity: 1;
+      transform: translateY(0);
+  }
+}
+
+.hero-content {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.hero h1 {
+  font-size: 48px;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+.hero p {
+  font-size: 19px;
+  margin-bottom: 24px;
+}
+
+/* Mission and Vision Section */
+.mission-vision {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 32px;
+  padding: 64px 24px;
+  background: #f7f9fa;
+}
+
+.mission-card, .vision-card {
+  background: white;
+  padding: 24px;
+  border-radius: 4px;
+  border: 1px solid var(--border-color);
+  transition: transform 0.3s ease;
+}
+
+.mission-card:hover, .vision-card:hover {
+  transform: translateY(-5px);
+}
+
+/* Team Section */
+.team {
+  padding: 64px 24px;
+  background: var(--white);
+}
+
+.team h2 {
+  font-size: 32px;
+  margin-bottom: 48px;
+  text-align: center;
+}
+
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.team-member {
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-align: center;
+  padding: 24px;
+}
+
+.team-member:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+/* Timeline Section */
+.timeline {
+  background: #f7f9fa;
+  padding: 64px 24px;
+}
+
+.timeline-items {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.timeline-item {
+  background: white;
+  padding: 24px;
+  border-radius: 4px;
+  border: 1px solid var(--border-color);
+  transition: transform 0.3s ease;
+}
+
+.timeline-item:hover {
+  transform: translateY(-5px);
+}
+
+.footer {
+  background: var(--primary-color);
+  color: white;
+  padding: 48px 24px;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .hamburger-menu {
+      display: block;
+  }
+
+  .nav-links {
+      position: fixed;
+      top: 72px;
+      left: -100%;
+      width: 100%;
+      height: calc(100vh - 72px);
+      background: var(--background-color);
+      flex-direction: column;
+      padding: 40px;
+      transition: left 0.3s ease;
+  }
+
+  .nav-links.active {
+      left: 0;
+  }
+
+  .hero h1 {
+      font-size: 32px;
+  }
+
+  .hero-content {
+      text-align: center;
+  }
+
+  .mission-vision, .team-grid, .timeline-items {
+      grid-template-columns: 1fr;
+  }
+}
